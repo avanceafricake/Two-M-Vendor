@@ -1,0 +1,48 @@
+# Miscellaneous
+*.class
+*.iml
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.idea
+.vscode
+Thumbs.db
+app.keystore
+
+# Flutter/Dart
+/build/
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+*.g.dart
+*.freezed.dart
+
+# Android
+/android/app/build/
+/android/build/
+/android/.gradle/
+/android/gradle/
+/android/gradlew
+/android/gradlew.bat
+/android/local.properties
+/android/key.properties
+/android/app/google-services.json
+
+# iOS
+/ios/build/
+/ios/Pods/
+/ios/Runner/Assets.xcassets/
+/ios/Flutter/App.framework
+/ios/Flutter/engine
+/ios/Flutter/flutter_assets
+/ios/Flutter/Generated.xcconfig
+/ios/Flutter/app.flx
+/ios/Flutter/snapshot.bin
+/ios/Flutter/vm_snapshot_data
+/ios/Flutter/isolate_snapshot_data
+/ios/ServiceDefinitions.json
+/ios/Podfile.lock

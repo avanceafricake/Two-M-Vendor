@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "118742994721",
+    "firebase_url": "https://two-m-ke-default-rtdb.firebaseio.com",
+    "project_id": "two-m-ke",
+    "storage_bucket": "two-m-ke.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118742994721:android:679c5899171cecd3bc3860",
+        "android_client_info": {
+          "package_name": "com.twom.admin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCakWdedga9xANTAq2EfAYvvFTkgDHBARI"
+        },
+        {
+          "current_key": "AIzaSyCS29a-HZHdXQcru17cB0YLFTZ2ybNP1DI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118742994721:android:1e174716cdedecaabc3860",
+        "android_client_info": {
+          "package_name": "com.twom.customer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCakWdedga9xANTAq2EfAYvvFTkgDHBARI"
+        },
+        {
+          "current_key": "AIzaSyCS29a-HZHdXQcru17cB0YLFTZ2ybNP1DI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118742994721:android:c20bca8e36d3090bbc3860",
+        "android_client_info": {
+          "package_name": "com.twom.vendor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCakWdedga9xANTAq2EfAYvvFTkgDHBARI"
+        },
+        {
+          "current_key": "AIzaSyCS29a-HZHdXQcru17cB0YLFTZ2ybNP1DI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,52 @@
+name: two_m_vendors
+description: "Empower your multi-vendor marketplace with a stylish admin app, offering seamless management of stores, restaurants, and pharmacies alongside insightful statistics and a sleek product registration experience."
+publish_to: "none"
+version: 1.0.0
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+
+  flutter_native_splash: ^2.0.0
+  country_picker: ^2.0.0
+  intl_phone_field: ^3.2.0
+  firebase_storage: ^13.0.0
+  cloud_firestore: '>=5.5.0'
+  firebase_auth: '>=5.3.3'
+  geolocator: 13.0.4
+  file_picker: '>=8.1.2'
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.1.0
+  firebase_core: ^4.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/images/Two_M_App_-_no_slogan.png
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: assets/images/Two_M_App_-_All_Your_Needs_One_App_3x.png
+  remove_alpha_ios: true
+
+# Native splash configuration (for when you build mobile outside the web preview)
+flutter_native_splash:
+  color: "#FFFFFF"
+  color_dark: "#0B1220"
+  image: assets/images/Two_M_App_-_All_Your_Needs_One_App_3x.png
+  android_12:
+    image: assets/images/Two_M_App_-_All_Your_Needs_One_App_3x.png
+    icon_background_color: "#FFFFFF"
+    icon_background_color_dark: "#0B1220"
+  web: true
