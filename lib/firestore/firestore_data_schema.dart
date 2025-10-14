@@ -2,7 +2,6 @@
 /// 
 /// This file defines the complete data structure for the vendor admin application
 /// including collections, documents, and their relationships in Firestore.
-library;
 
 import '../models/vendor.dart';
 import '../models/product.dart';

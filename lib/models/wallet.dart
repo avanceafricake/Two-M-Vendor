@@ -3,14 +3,21 @@ class WalletInfo {
   final String withdrawPhone;
   WalletInfo({required this.balance, required this.withdrawPhone});
 
+  static double? _parseDouble(dynamic value) {
+    if (value == null) return null;
+    if (value is num) return value.toDouble();
+    if (value is String) return double.tryParse(value);
+    return null;
+  }
+
   factory WalletInfo.fromMap(Map<String, dynamic> map) {
-    // Support both 'balance' and 'Balance' keys
-    final bal = map.containsKey('balance')
-        ? (map['balance'] as num?)?.toDouble()
-        : (map['Balance'] as num?)?.toDouble();
+    // Prefer availableBalance, then fall back to balance / Balance
+    final bal = _parseDouble(map['availableBalance'] ?? map['AvailableBalance']) ??
+        _parseDouble(map['balance']) ??
+        _parseDouble(map['Balance']);
     return WalletInfo(
       balance: bal ?? 0.0,
-      withdrawPhone: map['withdrawPhone'] ?? '',
+      withdrawPhone: (map['withdrawPhone'] ?? '').toString(),
     );
   }
 
@@ -63,6 +70,16 @@ class WalletTxn {
     return DateTime.fromMillisecondsSinceEpoch(0);
   }
 
+  static double _parseAmount(dynamic value) {
+    if (value == null) return 0.0;
+    if (value is num) return value.toDouble();
+    if (value is String) {
+      final parsed = double.tryParse(value);
+      if (parsed != null) return parsed;
+    }
+    return 0.0;
+  }
+
   factory WalletTxn.fromMap(String id, Map<String, dynamic> map) {
     final rawType = (map['type'] as String?)?.toLowerCase() ?? 'deposit';
     // Support external values 'debit'|'credit' by mapping to 'withdrawal'|'deposit'
@@ -74,7 +91,7 @@ class WalletTxn {
     return WalletTxn(
       id: id,
       type: normalized,
-      amount: (map['amount'] as num).toDouble(),
+      amount: _parseAmount(map['amount']),
       channel: (map['channel'] as String?) ?? 'Manual',
       status: (map['status'] as String?) ?? 'success',
       timestamp: _parseTimestamp(map['timestamp']),

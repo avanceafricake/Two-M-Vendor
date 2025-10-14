@@ -30,11 +30,11 @@ class AuthService {
     final uid = cred.user!.uid;
     final vendorSnap = await _db.doc(FirestorePaths.vendorDoc(uid)).get();
     if (vendorSnap.exists) {
-      final data = vendorSnap.data()!;
+      final data = vendorSnap.data()! as Map<String, dynamic>;
       final vendor = Vendor.fromMap(data);
       await LocalStorageService.saveVendor(vendor);
-      // Try M-Pesa init (non-blocking)
-      unawaited(MpesaService.instance.initFromFirestore(vendor.id));
+      // Set M-Pesa vendor context (non-blocking)
+      MpesaService.instance.setVendorContext(vendor.id);
     } else {
       // If vendor doc missing, create a minimal one based on auth email
       final vendor = Vendor(
@@ -51,7 +51,7 @@ class AuthService {
       );
       await _db.doc(FirestorePaths.vendorDoc(uid)).set(vendor.toMap());
       await LocalStorageService.saveVendor(vendor);
-      unawaited(MpesaService.instance.initFromFirestore(vendor.id));
+      MpesaService.instance.setVendorContext(vendor.id);
     }
   }
 
@@ -97,13 +97,15 @@ class AuthService {
       'Balance': 0.0,
       // Keep lowercase mirror fields for app compatibility if needed
       'balance': 0.0,
+      'AvailableBalance': 0.0,
+      'availableBalance': 0.0,
       'withdrawPhone': phone,
       'createdAt': nowIso,
       'updatedAt': nowIso,
     }, SetOptions(merge: true));
 
-    // Best-effort initialize M-Pesa using vendor-scoped config
-    unawaited(MpesaService.instance.initFromFirestore(vendor.id));
+    // Set M-Pesa vendor context (Cloud Functions hold secrets)
+    MpesaService.instance.setVendorContext(vendor.id);
 
     // Publish admin notification for new vendor registration
     final adminNotifier = AdminNotificationRepository(_db);

@@ -5,6 +5,7 @@ import '../models/vendor.dart';
 import '../screens/auth/login_screen.dart';
 import '../screens/orders/orders_screen.dart';
 import '../screens/home/dashboard_screen.dart';
+import '../screens/profile/profile_screen.dart';
 import '../screens/profile/user_profile_screen.dart';
 import '../screens/profile/vendor_profile_screen.dart';
 import '../screens/wallet/wallet_screen.dart';

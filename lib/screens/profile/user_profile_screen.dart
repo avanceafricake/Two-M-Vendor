@@ -30,7 +30,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
       if (uid != null) {
         final snap = await FirebaseFirestore.instance.doc(FirestorePaths.vendorDoc(uid)).get();
         if (snap.exists) {
-          v = Vendor.fromMap(snap.data()!);
+          v = Vendor.fromMap(snap.data()! as Map<String, dynamic>);
           await LocalStorageService.saveVendor(v);
         }
       }

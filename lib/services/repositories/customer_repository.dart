@@ -18,14 +18,14 @@ class CustomerRepository {
   Future<Customer?> getById(String customerId) async {
     final snap = await _db.collection('customers').doc(customerId).get();
     if (!snap.exists) return null;
-    return Customer.fromMap(snap.data()!);
+    return Customer.fromMap(snap.data()! as Map<String, dynamic>);
   }
 
   /// Watch customer profile for real-time updates
   Stream<Customer?> watch(String customerId) {
     return _db.collection('customers').doc(customerId).snapshots().map((doc) {
       if (!doc.exists) return null;
-      return Customer.fromMap(doc.data()!);
+      return Customer.fromMap(doc.data()! as Map<String, dynamic>);
     });
   }
 

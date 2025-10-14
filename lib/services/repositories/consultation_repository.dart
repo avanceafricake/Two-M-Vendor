@@ -10,7 +10,7 @@ class ConsultationRepository {
   // Settings are stored inside the vendor doc as a nested map to reduce reads.
   Stream<ConsultSettings> watchSettings(String vendorId) {
     return _db.doc(FirestorePaths.vendorDoc(vendorId)).snapshots().map((d) {
-      final data = d.data();
+      final data = d.data() as Map<String, dynamic>?;
       return ConsultSettings.fromMap(data?['consultationSettings'] as Map<String, dynamic>?);
     });
   }

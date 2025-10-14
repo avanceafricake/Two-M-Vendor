@@ -10,7 +10,7 @@ class VendorRepository {
   Future<Vendor?> getById(String vendorId) async {
     final snap = await _db.doc(FirestorePaths.vendorDoc(vendorId)).get();
     if (!snap.exists) return null;
-    return Vendor.fromMap(snap.data()!);
+    return Vendor.fromMap(snap.data()! as Map<String, dynamic>);
   }
 
   Future<void> upsert(Vendor vendor) async {
@@ -20,7 +20,7 @@ class VendorRepository {
   Stream<Vendor?> watch(String vendorId) {
     return _db.doc(FirestorePaths.vendorDoc(vendorId)).snapshots().map((d) {
       if (!d.exists) return null;
-      return Vendor.fromMap(d.data()!);
+      return Vendor.fromMap(d.data()! as Map<String, dynamic>);
     });
   }
 

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../services/local_storage.dart';
 import '../../services/service_locator.dart';
 import '../../models/wallet.dart';
 import '../../models/vendor.dart';
+import '../../services/mpesa_service.dart';
 
 class WalletScreen extends StatefulWidget {
   const WalletScreen({super.key});
@@ -23,6 +26,8 @@ class _WalletScreenState extends State<WalletScreen> {
     final locator = ServiceLocator();
     if (locator.isAuthenticated) {
       final uid = locator.currentUserId;
+      // Set vendor context for MpesaService so B2C functions know which vendor is invoking
+      MpesaService.instance.setVendorContext(uid);
       _walletStream = locator.walletRepository.watchWallet(uid);
       _txnsStream = locator.walletRepository.watchTransactions(uid);
       _vendorStream = locator.watchCurrentVendor().map((e) => e as Vendor?);

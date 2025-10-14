@@ -525,7 +525,7 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                         ),
                         const SizedBox(height: 16),
                         DropdownButtonFormField<String>(
-                          initialValue: _selectedCategory,
+                          value: _selectedCategory,
                           decoration: InputDecoration(
                             labelText: 'Category',
                             prefixIcon: const Icon(Icons.category_outlined),
@@ -750,7 +750,7 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
               ),
             ] else if (key == 'grocery') ...[
               DropdownButtonFormField<String>(
-                initialValue: _groceryUnit,
+                value: _groceryUnit,
                 items: const [
                   DropdownMenuItem(value: 'kg', child: Text('kg')),
                   DropdownMenuItem(value: 'g', child: Text('g')),
@@ -792,7 +792,7 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
               ),
               const SizedBox(height: 8),
               DropdownButtonFormField<String>(
-                initialValue: _pharmacyDosage,
+                value: _pharmacyDosage,
                 items: const [
                   DropdownMenuItem(value: 'Tablets', child: Text('Tablets')),
                   DropdownMenuItem(value: 'Capsules', child: Text('Capsules')),

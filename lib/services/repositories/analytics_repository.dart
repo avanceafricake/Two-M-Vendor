@@ -59,14 +59,14 @@ class AnalyticsRepository {
   Future<AnalyticsData?> getAnalytics(String vendorId) async {
     final doc = await _db.collection('analytics').doc(vendorId).get();
     if (!doc.exists) return null;
-    return AnalyticsData.fromMap(doc.data()!);
+    return AnalyticsData.fromMap(doc.data()! as Map<String, dynamic>);
   }
 
   /// Watch analytics data for real-time updates
   Stream<AnalyticsData?> watchAnalytics(String vendorId) {
     return _db.collection('analytics').doc(vendorId).snapshots().map((doc) {
       if (!doc.exists) return null;
-      return AnalyticsData.fromMap(doc.data()!);
+      return AnalyticsData.fromMap(doc.data()! as Map<String, dynamic>);
     });
   }
 

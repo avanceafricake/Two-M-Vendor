@@ -17,7 +17,7 @@ class ProductRepository {
   Future<Product?> getById(String productId) async {
     final snap = await _db.collection('products').doc(productId).get();
     if (!snap.exists) return null;
-    return Product.fromMap(snap.data()!);
+    return Product.fromMap(snap.data()! as Map<String, dynamic>);
   }
 
   /// Update existing product

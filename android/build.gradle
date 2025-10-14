@@ -1,11 +1,12 @@
 buildscript {
+    ext.kotlin_version = '1.9.24'
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.6.1'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.24'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -16,60 +17,23 @@ allprojects {
     }
 }
 
-rootProject.buildDir = "../build"
-subprojects {
-    afterEvaluate { project ->
-        if (project.hasProperty("kotlin")) {
-            project.tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-                kotlinOptions {
-                    jvmTarget = "17"
-                }
-            }
-        }
-
-        if (project.hasProperty('android')) {
-            project.android {
-                compileOptions {
-                    sourceCompatibility = JavaVersion.VERSION_17
-                    targetCompatibility = JavaVersion.VERSION_17
-                }
-            }
-        }
-    }
-} 
- 
-subprojects {
-    afterEvaluate { project ->
-        if (project.plugins.hasPlugin("com.android.application") ||
-                project.plugins.hasPlugin("com.android.library")) {
-            project.android {
-                compileSdk 35
-            }
-        }
-        if (project.hasProperty('android')) {
-            project.android {
-                if (namespace == null) {
-                    namespace project.group
-                }
-            }
-        }
-    }
-}
-
+rootProject.buildDir = '../build'
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-
-subprojects {
-    project.evaluationDependsOn(":app")
+    afterEvaluate {
+        if (project.hasProperty('android')) {
+            android {
+                compileSdkVersion 35
+                sourceSets {
+                    main {
+                        java.srcDirs += 'src/main/kotlin'
+                    }
+                }
+            }
+        }
+    }
 }
 
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
-}
-
-def keystoreProperties = new Properties()
-def keystorePropertiesFile = rootProject.file('key.properties')
-if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }

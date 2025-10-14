@@ -12,7 +12,7 @@ class LocalStorageService {
   static const String _walletBalanceKey = 'wallet_balance_kes';
   static const String _walletTxnsKey = 'wallet_txns';
 
-  static final Map<String, String> _storage = {};  
+  static Map<String, String> _storage = {};  
 
   // Auth UX preferences
   static const String _rememberMeKey = 'remember_me';

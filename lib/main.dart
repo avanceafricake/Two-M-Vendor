@@ -6,6 +6,8 @@ import 'theme.dart';
 import 'firebase_options.dart';
 import 'services/service_locator.dart';
 import 'screens/auth/login_screen.dart';
+import 'screens/home/dashboard_screen.dart';
+import 'screens/home/root_nav_shell.dart';
 import 'screens/auth/startup_gate.dart';
 import 'screens/splash/app_splash.dart';
 

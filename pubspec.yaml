@@ -1,12 +1,14 @@
 name: two_m_vendors
 description: "Empower your multi-vendor marketplace with a stylish admin app, offering seamless management of stores, restaurants, and pharmacies alongside insightful statistics and a sleek product registration experience."
 publish_to: "none"
-version: 1.0.0
+version: 1.0.1+2
 
 environment:
   sdk: ^3.6.0
 
 dependencies:
+  http: ^1.0.0
+  cloud_functions: ^6.0.0
 
   flutter_native_splash: ^2.0.0
   country_picker: ^2.0.0
@@ -33,11 +35,12 @@ flutter:
   assets:
     - assets/images/
     - assets/images/Two_M_App_-_no_slogan.png
+    - "assets/icons/Two M App - All Your Needs, One App.png"
 
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: assets/images/Two_M_App_-_All_Your_Needs_One_App_3x.png
+  image_path: "assets/icons/Two M App - All Your Needs, One App.png"
   remove_alpha_ios: true
 
 # Native splash configuration (for when you build mobile outside the web preview)

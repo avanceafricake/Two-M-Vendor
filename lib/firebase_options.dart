@@ -72,6 +72,8 @@ class DefaultFirebaseOptions {
     projectId: 'two-m-ke',
     databaseURL: 'https://two-m-ke-default-rtdb.firebaseio.com',
     storageBucket: 'two-m-ke.firebasestorage.app',
+    androidClientId: '118742994721-k0p3bbgaad2oso0lt6jtqv12s5ipvn7e.apps.googleusercontent.com',
+    iosClientId: '118742994721-2uhd8gctag7n7qkk3t5f45ome9ma166g.apps.googleusercontent.com',
     iosBundleId: 'com.twom.vendor',
   );
 

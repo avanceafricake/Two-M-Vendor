@@ -44,6 +44,8 @@ class FirestoreBootstrap {
         'Balance': 0.0,
         // Keep lowercase for app compatibility if needed
         'balance': 0.0,
+        'AvailableBalance': 0.0,
+        'availableBalance': 0.0,
         'withdrawPhone': vendor.phone.isNotEmpty ? vendor.phone : authPhone,
         'createdAt': nowIso,
         'updatedAt': nowIso,
@@ -54,6 +56,8 @@ class FirestoreBootstrap {
         if (!wShot.data()!.containsKey('Id')) 'Id': uid,
         if (!wShot.data()!.containsKey('Balance')) 'Balance': 0.0,
         if (!wShot.data()!.containsKey('balance')) 'balance': 0.0,
+        if (!wShot.data()!.containsKey('AvailableBalance')) 'AvailableBalance': 0.0,
+        if (!wShot.data()!.containsKey('availableBalance')) 'availableBalance': 0.0,
         if (!wShot.data()!.containsKey('withdrawPhone')) 'withdrawPhone': vendor.phone.isNotEmpty ? vendor.phone : authPhone,
         'updatedAt': DateTime.now().toIso8601String(),
       }, SetOptions(merge: true));

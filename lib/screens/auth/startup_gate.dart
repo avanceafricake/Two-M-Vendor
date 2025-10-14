@@ -5,9 +5,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../services/firestore_paths.dart';
 import '../../models/vendor.dart';
 
+import 'phone_verification_screen.dart';
 import '../home/root_nav_shell.dart';
 import '../../services/phone_verification_coordinator.dart';
 import '../../services/firestore_bootstrap.dart';
+import 'pending_approval_screen.dart';
 
 class StartupGate extends StatefulWidget {
   const StartupGate({super.key});

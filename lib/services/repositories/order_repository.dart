@@ -25,7 +25,7 @@ class OrderRepository {
     final ref = _db.collection(FirestorePaths.orders).doc(orderId);
     final snap = await ref.get();
     if (!snap.exists) throw Exception('Order not found');
-    final current = model.Order.fromMap(snap.data()!);
+    final current = model.Order.fromMap(snap.data()! as Map<String, dynamic>);
 
     // Verify the vendor owns this order
     if (current.vendorId != vendorId) {
